@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:immenceapp/Model/data.dart';
-import 'package:immenceapp/profile_screen.dart';
+import 'package:immenceapp/src/Model/data.dart';
+import 'package:immenceapp/src/Utils/colors.dart';
 
 class UserDetailsScreen extends StatefulWidget {
   const UserDetailsScreen({super.key});
@@ -21,11 +21,12 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
         shadowColor: Colors.white,
         child: ListTile(
             leading: CircleAvatar(
-              backgroundColor: const Color.fromARGB(255, 236, 241, 243),
+              backgroundColor: ThemeColors.profileBackground,
               child: Text(
                 user.name.substring(0, 1).toUpperCase(),
                 style: const TextStyle(
-                    color: Color(0xFF0231C8), fontWeight: FontWeight.bold),
+                    color: ThemeColors.primaryColor,
+                    fontWeight: FontWeight.bold),
               ),
             ),
             title: Text(
@@ -40,7 +41,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
             trailing: curUser.email == user.email
                 ? const Icon(
                     Icons.circle,
-                    color: Colors.blue,
+                    color: ThemeColors.pureBlue,
                     size: 12,
                   )
                 : null),
@@ -78,7 +79,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                     'immence',
                     style: TextStyle(
                       fontFamily: 'Poppins',
-                      color: Color(0xFF0231C8),
+                      color: ThemeColors.primaryColor,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),

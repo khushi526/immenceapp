@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:immenceapp/profile_screen.dart';
-import 'package:immenceapp/user_screen.dart';
+import 'package:immenceapp/src/view/profile_screen.dart';
+import 'package:immenceapp/src/Utils/colors.dart';
+import 'package:immenceapp/src/view/user_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,7 +25,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: Center(
         child: _selectedwidget.elementAt(_index),
       ),
@@ -41,8 +41,8 @@ class _HomePageState extends State<HomePage> {
         ],
         type: BottomNavigationBarType.shifting,
         currentIndex: _index,
-        selectedItemColor: const Color(0xFF0231C8),
-        unselectedItemColor: const Color(0xFF9F9F9F),
+        selectedItemColor: ThemeColors.primaryColor,
+        unselectedItemColor: ThemeColors.unselectedColor,
         onTap: _onClicked,
         elevation: 5,
       ),

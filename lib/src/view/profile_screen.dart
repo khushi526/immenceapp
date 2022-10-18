@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:immenceapp/Model/data.dart';
+import 'package:immenceapp/src/Model/data.dart';
+import 'package:immenceapp/src/Utils/Colors.dart';
+import 'package:immenceapp/src/Utils/font_manager.dart';
+import 'package:immenceapp/src/Utils/widgets/user_detail.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -18,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
               padding: EdgeInsets.all(15.0),
               child: CircleAvatar(
                 radius: 60,
-                backgroundColor: Color.fromARGB(255, 236, 241, 243),
+                backgroundColor: ThemeColors.profileBackground,
                 foregroundImage: AssetImage("assets/Logo.png"),
               ),
             ),
@@ -28,72 +31,34 @@ class ProfileScreen extends StatelessWidget {
             Text(
               user.name,
               style: const TextStyle(
-                  color: Color(0xFF0231C8),
-                  fontSize: 26,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: 'Manrope'),
+                color: ThemeColors.primaryColor,
+                fontSize: FontSize.s26,
+                fontWeight: FontWeight.w700,
+                fontFamily: FontConstant.fontFamily,
+              ),
             ),
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Email',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
-                    fontFamily: 'Manrope',
-                  ),
-                ),
-                Text(
-                  user.email,
-                  style: const TextStyle(
-                    color: Color(0xFF0231C8),
-                    fontFamily: 'Manrope',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ],
+            userDetail(
+              name: 'Email',
+              user: user.email,
             ),
             const SizedBox(
               height: 10,
             ),
             const Divider(
-              color: Color(0xFFCDD1E0),
+              color: ThemeColors.dividerColor,
             ),
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Phone No.',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
-                    fontFamily: 'Manrope',
-                  ),
-                ),
-                Text(
-                  user.phone,
-                  style: const TextStyle(
-                    color: Color(0xFF0231C8),
-                    fontFamily: 'Manrope',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ],
-            ),
+            userDetail(name: 'Phone No', user: user.phone),
             const SizedBox(
               height: 10,
             ),
             const Divider(
-              color: Color(0xFFCDD1E0),
+              color: ThemeColors.dividerColor,
             ),
             const SizedBox(
               height: 5,
@@ -104,18 +69,18 @@ class ProfileScreen extends StatelessWidget {
                 const Text(
                   'Logout',
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
+                    fontSize: FontSize.s18,
+                    fontWeight: FontWeightManager.medium,
                     color: Colors.black,
-                    fontFamily: 'Manrope',
+                    fontFamily: FontConstant.fontFamily,
                   ),
                 ),
                 IconButton(
                   onPressed: () => FirebaseAuth.instance.signOut(),
                   icon: const Icon(
                     Icons.logout,
-                    size: 18,
-                    color: Color(0xFF0231C8),
+                    size: FontSize.s18,
+                    color: ThemeColors.primaryColor,
                   ),
                 )
               ],
@@ -124,7 +89,7 @@ class ProfileScreen extends StatelessWidget {
               height: 2,
             ),
             const Divider(
-              color: Color(0xFFCDD1E0),
+              color: ThemeColors.dividerColor,
             ),
           ],
         ),

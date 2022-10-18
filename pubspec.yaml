@@ -39,6 +39,8 @@ dependencies:
   cloud_firestore: ^3.5.1
   provider: ^6.0.3
   email_validator: ^2.1.17
+  stacked: ^3.0.0
+  
 
 dev_dependencies:
   flutter_test:
